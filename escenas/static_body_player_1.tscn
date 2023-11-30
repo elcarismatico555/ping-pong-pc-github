@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://dk1af4exb8785"]
+
+[ext_resource type="Script" path="res://escenas/static_body_player_1.gd" id="1_esgs8"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_8manp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vtubr"]
+size = Vector2(16, 80)
+
+[node name="StaticBodyPlayer1" type="StaticBody2D"]
+physics_material_override = SubResource("PhysicsMaterial_8manp")
+script = ExtResource("1_esgs8")
+
+[node name="CollisionShapePlayer1" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_vtubr")

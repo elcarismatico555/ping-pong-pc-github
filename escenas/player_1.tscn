@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://j10f4m6kx487"]
+
+[ext_resource type="Script" path="res://escenas/player_1.gd" id="1_2v5su"]
+[ext_resource type="Texture2D" uid="uid://cd21wc1kdc0vn" path="res://icon.svg" id="2_p6mkr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2gnek"]
+size = Vector2(16, 80)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_12h63"]
+radius = 24.0
+
+[node name="player1" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 5
+wall_min_slide_angle = 0.0
+script = ExtResource("1_2v5su")
+
+[node name="Sprite2DP1" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(0.1875, 1.5)
+texture = ExtResource("2_p6mkr")
+
+[node name="CollisionShape2DP1" type="CollisionShape2D" parent="."]
+position = Vector2(-4.76837e-07, 0)
+shape = SubResource("RectangleShape2D_2gnek")
+debug_color = Color(0.717647, 0.482353, 0, 0.419608)
+
+[node name="CollisionShape2D2P1" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, -80)
+shape = SubResource("CircleShape2D_12h63")
+disabled = true
+debug_color = Color(0.717647, 0.482353, 0, 0.419608)
+
+[node name="CollisionShape2D3P1" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, 80)
+shape = SubResource("CircleShape2D_12h63")
+disabled = true
+debug_color = Color(0.717647, 0.482353, 0, 0.419608)

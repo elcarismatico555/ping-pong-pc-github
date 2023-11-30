@@ -1,0 +1,146 @@
+[gd_scene load_steps=7 format=3 uid="uid://kg8cy2e8nwp4"]
+
+[ext_resource type="Script" path="res://escenas/main.gd" id="1_0i73x"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ns0k8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1bvmy"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bjs8s"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g8nsg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_u1l1e"]
+
+[node name="main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_0i73x")
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="ColorRectMain" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0745098, 0.0705882, 0.0705882, 1)
+
+[node name="PanelMain" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 160.0
+offset_top = 80.0
+offset_right = -160.0
+offset_bottom = -120.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_ns0k8")
+
+[node name="LabelTitulo" type="Label" parent="PanelMain"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -280.0
+offset_right = 280.0
+offset_bottom = 90.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 60
+text = "PING PONG PC :D"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainerOptions" type="VBoxContainer" parent="PanelMain"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 240.0
+offset_top = 120.0
+offset_right = -240.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainerOptions1" type="HBoxContainer" parent="PanelMain/VBoxContainerOptions"]
+layout_mode = 2
+
+[node name="Ball" type="Label" parent="PanelMain/VBoxContainerOptions/HBoxContainerOptions1"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "ball:"
+
+[node name="OptionButton1" type="OptionButton" parent="PanelMain/VBoxContainerOptions/HBoxContainerOptions1"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_font_sizes/font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxEmpty_1bvmy")
+item_count = 2
+selected = 0
+popup/item_0/text = "CharacterBody"
+popup/item_0/id = 0
+popup/item_1/text = "RigidBody"
+popup/item_1/id = 1
+
+[node name="HBoxContainerOptions2" type="HBoxContainer" parent="PanelMain/VBoxContainerOptions"]
+layout_mode = 2
+
+[node name="Player" type="Label" parent="PanelMain/VBoxContainerOptions/HBoxContainerOptions2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "player:"
+
+[node name="OptionButton2" type="OptionButton" parent="PanelMain/VBoxContainerOptions/HBoxContainerOptions2"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_styles/focus = SubResource("StyleBoxEmpty_bjs8s")
+item_count = 2
+selected = 0
+popup/item_0/text = "Fijo"
+popup/item_0/id = 0
+popup/item_1/text = "Libre"
+popup/item_1/id = 1
+
+[node name="VBoxContainerMainMenu" type="VBoxContainer" parent="PanelMain"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 120.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ButtonPlay" type="Button" parent="PanelMain/VBoxContainerMainMenu"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+theme_override_styles/focus = SubResource("StyleBoxEmpty_g8nsg")
+text = "PLAY"
+
+[node name="ButtonOptions" type="Button" parent="PanelMain/VBoxContainerMainMenu"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "OPTIONS"
+
+[node name="ButtonExit" type="Button" parent="PanelMain/VBoxContainerMainMenu"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+theme_override_styles/focus = SubResource("StyleBoxEmpty_u1l1e")
+text = "EXIT"
+
+[connection signal="item_selected" from="PanelMain/VBoxContainerOptions/HBoxContainerOptions1/OptionButton1" to="." method="_on_option_button_item_selected"]
+[connection signal="item_selected" from="PanelMain/VBoxContainerOptions/HBoxContainerOptions2/OptionButton2" to="." method="_on_option_button_2_item_selected"]
+[connection signal="button_up" from="PanelMain/VBoxContainerMainMenu/ButtonPlay" to="." method="_on_button_play_button_up"]
+[connection signal="button_up" from="PanelMain/VBoxContainerMainMenu/ButtonOptions" to="." method="_on_button_options_button_up"]
+[connection signal="button_up" from="PanelMain/VBoxContainerMainMenu/ButtonExit" to="." method="_on_button_exit_button_up"]

@@ -1,0 +1,169 @@
+[gd_scene load_steps=18 format=3 uid="uid://coji55dychjbe"]
+
+[ext_resource type="Script" path="res://escenas/escena_juego.gd" id="1_76pay"]
+[ext_resource type="Script" path="res://escenas/escena_juego_interfaz.gd" id="1_j8xbj"]
+[ext_resource type="PackedScene" uid="uid://j10f4m6kx487" path="res://escenas/player_1.tscn" id="2_u8fpc"]
+[ext_resource type="PackedScene" uid="uid://b31d565fkt5pg" path="res://escenas/player_2.tscn" id="3_sx4wy"]
+[ext_resource type="PackedScene" uid="uid://byrmh3fxf88l5" path="res://escenas/ball.tscn" id="4_kaesl"]
+[ext_resource type="PackedScene" uid="uid://dk1af4exb8785" path="res://escenas/static_body_player_1.tscn" id="6_fbk70"]
+[ext_resource type="PackedScene" uid="uid://xbhj3w7x7fmq" path="res://escenas/ball_2.tscn" id="7_mk6jy"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_i0r11"]
+friction = 0.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kkcoa"]
+size = Vector2(1280, 20)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_7rgn8"]
+friction = 0.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1ut3w"]
+size = Vector2(1280, 20)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_n1g2o"]
+friction = 0.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_itcsq"]
+size = Vector2(20, 720)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_a6lu3"]
+friction = 0.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ayq4o"]
+size = Vector2(20, 720)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4beqj"]
+friction = 0.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qsbgj"]
+size = Vector2(20, 720)
+
+[node name="escena_juego" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_j8xbj")
+
+[node name="escenaJuego" type="Node2D" parent="."]
+script = ExtResource("1_76pay")
+
+[node name="StaticBodySuperior" type="StaticBody2D" parent="escenaJuego"]
+position = Vector2(640, 0)
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_i0r11")
+
+[node name="CollisionShapeSuperior" type="CollisionShape2D" parent="escenaJuego/StaticBodySuperior"]
+position = Vector2(0, -2.25)
+shape = SubResource("RectangleShape2D_kkcoa")
+debug_color = Color(1, 1, 1, 1)
+
+[node name="StaticBodyInferior" type="StaticBody2D" parent="escenaJuego"]
+position = Vector2(640, 720)
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_7rgn8")
+
+[node name="CollisionShapeInferior" type="CollisionShape2D" parent="escenaJuego/StaticBodyInferior"]
+position = Vector2(0, 2.5)
+shape = SubResource("RectangleShape2D_1ut3w")
+debug_color = Color(1, 1, 1, 1)
+
+[node name="StaticBodyIzquierda" type="StaticBody2D" parent="escenaJuego"]
+position = Vector2(0, 360)
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_n1g2o")
+
+[node name="CollisionShapeIzquierda" type="CollisionShape2D" parent="escenaJuego/StaticBodyIzquierda"]
+position = Vector2(-2.5, 0)
+shape = SubResource("RectangleShape2D_itcsq")
+debug_color = Color(1, 1, 1, 1)
+
+[node name="StaticBodyDerecha" type="StaticBody2D" parent="escenaJuego"]
+position = Vector2(1280, 360)
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_a6lu3")
+
+[node name="CollisionShapeDerecha" type="CollisionShape2D" parent="escenaJuego/StaticBodyDerecha"]
+shape = SubResource("RectangleShape2D_ayq4o")
+debug_color = Color(1, 1, 1, 1)
+
+[node name="StaticBodyLineaCentral" type="StaticBody2D" parent="escenaJuego"]
+position = Vector2(640, 360)
+collision_layer = 4
+collision_mask = 2
+physics_material_override = SubResource("PhysicsMaterial_4beqj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="escenaJuego/StaticBodyLineaCentral"]
+shape = SubResource("RectangleShape2D_qsbgj")
+debug_color = Color(1, 1, 1, 0)
+
+[node name="player1" parent="escenaJuego" instance=ExtResource("2_u8fpc")]
+position = Vector2(50, 360)
+metadata/_edit_group_ = true
+
+[node name="player2" parent="escenaJuego" instance=ExtResource("3_sx4wy")]
+position = Vector2(1230, 360)
+metadata/_edit_group_ = true
+
+[node name="ball" parent="escenaJuego" instance=ExtResource("4_kaesl")]
+position = Vector2(600, 390)
+metadata/_edit_group_ = true
+
+[node name="player12" parent="escenaJuego" instance=ExtResource("6_fbk70")]
+visible = false
+
+[node name="ball2" parent="escenaJuego" instance=ExtResource("7_mk6jy")]
+position = Vector2(600, 350)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 256.0
+offset_right = -256.0
+offset_bottom = -570.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 200
+alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="ContadorP1" type="Label" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "0"
+vertical_alignment = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Ronda" type="Label" parent="HBoxContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Total"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NumeroRonda" type="Label" parent="HBoxContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "0"
+horizontal_alignment = 1
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="ContadorP2" type="Label" parent="HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "0"
+vertical_alignment = 2
