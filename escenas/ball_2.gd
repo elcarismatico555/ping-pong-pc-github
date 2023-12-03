@@ -1,7 +1,6 @@
 extends RigidBody2D
 
 var speed : int = 300
-var numRandom : int
 var ultima_colision
 var velocidad_minima : int = 300
 var ultimo_jugador_golpeado : String
@@ -25,20 +24,18 @@ func _on_visible_on_screen_notifier_2d_screen_entered():
 	start()
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
+	sumar_score()
 	visible_en_escena = false
 
 func start():
 	linear_velocity *= 0
 	await get_tree().create_timer(2.0).timeout
-	numRandom = randi_range(-1, 1)
-	while numRandom == 0:
-		numRandom = randi_range(-1, 1)
-	linear_velocity.x = numRandom
-	linear_velocity.y = numRandom
+	linear_velocity.x = Global.numero_random()
+	linear_velocity.y = Global.numero_random()
 	linear_velocity *= speed
 
 func sumar_score():
-	if ultima_colision == "StaticBodyDerecha":
+	if ultima_colision == "StaticBodyDerecha" or position.x > 1280:
 		Global.scoreP1 += 1
-	if ultima_colision == "StaticBodyIzquierda":
+	if ultima_colision == "StaticBodyIzquierda" or position.x < 0:
 		Global.scoreP2 += 1

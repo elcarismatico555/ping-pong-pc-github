@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://coji55dychjbe"]
+[gd_scene load_steps=19 format=3 uid="uid://coji55dychjbe"]
 
 [ext_resource type="Script" path="res://escenas/escena_juego.gd" id="1_76pay"]
 [ext_resource type="Script" path="res://escenas/escena_juego_interfaz.gd" id="1_j8xbj"]
@@ -32,11 +32,13 @@ friction = 0.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ayq4o"]
 size = Vector2(20, 720)
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_hl126"]
+
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4beqj"]
 friction = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qsbgj"]
-size = Vector2(16, 720)
+size = Vector2(32, 720)
 
 [node name="escena_juego" type="Control"]
 layout_mode = 3
@@ -84,15 +86,18 @@ disabled = true
 debug_color = Color(1, 1, 1, 1)
 
 [node name="StaticBodyDerecha" type="StaticBody2D" parent="escenaJuego"]
+visible = false
 position = Vector2(1280, 360)
 collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_a6lu3")
 
 [node name="CollisionShapeDerecha" type="CollisionShape2D" parent="escenaJuego/StaticBodyDerecha"]
 shape = SubResource("RectangleShape2D_ayq4o")
+disabled = true
 debug_color = Color(1, 1, 1, 1)
 
 [node name="StaticBodyLineaCentral" type="StaticBody2D" parent="escenaJuego"]
+material = SubResource("CanvasItemMaterial_hl126")
 position = Vector2(640, 360)
 collision_layer = 4
 collision_mask = 2

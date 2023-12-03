@@ -1,7 +1,6 @@
 extends CharacterBody2D
 
 var speed : int = 400
-var numRandom : int
 var ultima_colision : String
 var ultimo_jugador_golpeado : String
 var incremento : float = 1
@@ -28,11 +27,8 @@ func _on_visible_on_screen_notifier_2d_screen_exited():
 func start():
 	velocity *= 0
 	await get_tree().create_timer(2.0).timeout
-	numRandom = randi_range(-1, 1)
-	while !numRandom:
-		numRandom = randi_range(-1, 1)
-	velocity.x = numRandom
-	velocity.y = numRandom
+	velocity.x = Global.numero_random()
+	velocity.y = Global.numero_random()
 	velocity *= speed
 
 func sumar_score():

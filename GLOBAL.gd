@@ -11,6 +11,7 @@ var behaviors_ball : Array = [0,0]
 var ultima_colision_pelota : String = ""
 var tipo_ball : int
 var modo_players : int
+var lista_int : Array = [-1,1]
 
 func _ready():
 	keys_p1 = [KEY_A, KEY_D, KEY_W, KEY_S]
@@ -22,6 +23,10 @@ func _input(_event):
 			get_tree().change_scene_to_file("res://escenas/main.tscn")
 			scoreP1 = 0
 			scoreP2 = 0
+
+func numero_random():
+	var random = lista_int[randi() % lista_int.size()]
+	return random
 
 func get_axis1() -> Vector2:
 	axis1.x = int(Input.is_key_pressed(keys_p1[0])) - int(Input.is_key_pressed(keys_p1[1]))
