@@ -1,20 +1,13 @@
 extends CharacterBody2D
 
-@export var speed : int = 300
+var speed : int = 300
 var numRandom : int
 var ultima_colision : String
 var ultimo_jugador_golpeado : String
 var incremento : float = 1
 
 func _ready():
-	numRandom = randi_range(-1, 1)
-	while numRandom == 0:
-		numRandom = randi_range(-1, 1)
 	start()
-
-func _draw():
-	#draw_circle(Vector2(0,0),20,Color(1,1,1,1))
-	pass
 
 func _physics_process(delta):
 	var  info_colision = move_and_collide(velocity * delta)
@@ -28,6 +21,10 @@ func _physics_process(delta):
 		print("jugador: " + ultimo_jugador_golpeado)
 
 func start():
+	await get_tree().create_timer(2.0).timeout
+	numRandom = randi_range(-1, 1)
+	while numRandom == 0:
+		numRandom = randi_range(-1, 1)
 	velocity.x = numRandom
 	velocity.y = numRandom
 	velocity *= speed

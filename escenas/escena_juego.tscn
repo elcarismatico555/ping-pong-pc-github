@@ -36,7 +36,7 @@ size = Vector2(20, 720)
 friction = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qsbgj"]
-size = Vector2(20, 720)
+size = Vector2(16, 720)
 
 [node name="escena_juego" type="Control"]
 layout_mode = 3
@@ -46,6 +46,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_j8xbj")
+metadata/_edit_group_ = true
 
 [node name="escenaJuego" type="Node2D" parent="."]
 script = ExtResource("1_76pay")
@@ -71,6 +72,7 @@ shape = SubResource("RectangleShape2D_1ut3w")
 debug_color = Color(1, 1, 1, 1)
 
 [node name="StaticBodyIzquierda" type="StaticBody2D" parent="escenaJuego"]
+visible = false
 position = Vector2(0, 360)
 collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_n1g2o")
@@ -78,6 +80,7 @@ physics_material_override = SubResource("PhysicsMaterial_n1g2o")
 [node name="CollisionShapeIzquierda" type="CollisionShape2D" parent="escenaJuego/StaticBodyIzquierda"]
 position = Vector2(-2.5, 0)
 shape = SubResource("RectangleShape2D_itcsq")
+disabled = true
 debug_color = Color(1, 1, 1, 1)
 
 [node name="StaticBodyDerecha" type="StaticBody2D" parent="escenaJuego"]
@@ -117,7 +120,7 @@ visible = false
 [node name="ball2" parent="escenaJuego" instance=ExtResource("7_mk6jy")]
 position = Vector2(600, 350)
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="HBoxContainer1" type="HBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -130,20 +133,20 @@ grow_vertical = 2
 theme_override_constants/separation = 200
 alignment = 1
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer1"]
 layout_mode = 2
 alignment = 2
 
-[node name="ContadorP1" type="Label" parent="HBoxContainer/VBoxContainer2"]
+[node name="ContadorP1" type="Label" parent="HBoxContainer1/VBoxContainer2"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "0"
 vertical_alignment = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+[node name="VBoxContainer1" type="VBoxContainer" parent="HBoxContainer1"]
 layout_mode = 2
 
-[node name="Ronda" type="Label" parent="HBoxContainer/VBoxContainer"]
+[node name="Ronda" type="Label" parent="HBoxContainer1/VBoxContainer1"]
 visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
@@ -151,19 +154,25 @@ text = "Total"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="NumeroRonda" type="Label" parent="HBoxContainer/VBoxContainer"]
+[node name="NumeroRonda" type="Label" parent="HBoxContainer1/VBoxContainer1"]
 visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "0"
 horizontal_alignment = 1
 
-[node name="VBoxContainer3" type="VBoxContainer" parent="HBoxContainer"]
+[node name="VBoxContainer3" type="VBoxContainer" parent="HBoxContainer1"]
 layout_mode = 2
 alignment = 2
 
-[node name="ContadorP2" type="Label" parent="HBoxContainer/VBoxContainer3"]
+[node name="ContadorP2" type="Label" parent="HBoxContainer1/VBoxContainer3"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "0"
 vertical_alignment = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 256.0
+offset_right = 1024.0
+offset_bottom = 150.0

@@ -26,7 +26,7 @@ flip_v = true
 
 [node name="CollisionShape2DP2" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_s32ad")
-debug_color = Color(0.709804, 0.486275, 0, 0.419608)
+debug_color = Color(1, 1, 1, 1)
 
 [node name="CollisionShape2D2P2" type="CollisionShape2D" parent="."]
 visible = false

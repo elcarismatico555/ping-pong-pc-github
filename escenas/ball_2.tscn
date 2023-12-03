@@ -2,21 +2,26 @@
 
 [ext_resource type="Script" path="res://escenas/ball_2.gd" id="1_fv375"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_kjgex"]
-friction = 0.0
-bounce = 1.0
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_1366s"]
+absorbent = true
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tgcmo"]
 
 [node name="ball2" type="RigidBody2D"]
 collision_layer = 2
 collision_mask = 3
-physics_material_override = SubResource("PhysicsMaterial_kjgex")
+physics_material_override = SubResource("PhysicsMaterial_1366s")
 gravity_scale = 0.0
+lock_rotation = true
 max_contacts_reported = 3
 contact_monitor = true
-lock_rotation = true
 script = ExtResource("1_fv375")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_tgcmo")
+debug_color = Color(1, 1, 1, 0.419608)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

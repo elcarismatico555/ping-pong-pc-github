@@ -23,7 +23,7 @@ texture = ExtResource("2_p6mkr")
 [node name="CollisionShape2DP1" type="CollisionShape2D" parent="."]
 position = Vector2(-4.76837e-07, 0)
 shape = SubResource("RectangleShape2D_2gnek")
-debug_color = Color(0.717647, 0.482353, 0, 0.419608)
+debug_color = Color(1, 1, 1, 1)
 
 [node name="CollisionShape2D2P1" type="CollisionShape2D" parent="."]
 visible = false

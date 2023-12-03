@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://kg8cy2e8nwp4"]
+[gd_scene load_steps=8 format=3 uid="uid://kg8cy2e8nwp4"]
 
 [ext_resource type="Script" path="res://escenas/main.gd" id="1_0i73x"]
 
@@ -7,6 +7,8 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1bvmy"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bjs8s"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nhjq3"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g8nsg"]
 
@@ -80,13 +82,14 @@ layout_mode = 2
 [node name="Ball" type="Label" parent="PanelMain/VBoxContainerOptions/HBoxContainerOptions1"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = "ball:"
+text = "Ball:"
 
 [node name="OptionButton1" type="OptionButton" parent="PanelMain/VBoxContainerOptions/HBoxContainerOptions1"]
 layout_mode = 2
 size_flags_horizontal = 10
 theme_override_font_sizes/font_size = 20
 theme_override_styles/focus = SubResource("StyleBoxEmpty_1bvmy")
+flat = true
 item_count = 2
 selected = 0
 popup/item_0/text = "CharacterBody"
@@ -100,17 +103,41 @@ layout_mode = 2
 [node name="Player" type="Label" parent="PanelMain/VBoxContainerOptions/HBoxContainerOptions2"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = "player:"
+text = "Player:"
 
 [node name="OptionButton2" type="OptionButton" parent="PanelMain/VBoxContainerOptions/HBoxContainerOptions2"]
 layout_mode = 2
 size_flags_horizontal = 10
+theme_override_font_sizes/font_size = 20
 theme_override_styles/focus = SubResource("StyleBoxEmpty_bjs8s")
+flat = true
 item_count = 2
 selected = 0
 popup/item_0/text = "Fijo"
 popup/item_0/id = 0
 popup/item_1/text = "Libre"
+popup/item_1/id = 1
+
+[node name="HBoxContainerOptions3" type="HBoxContainer" parent="PanelMain/VBoxContainerOptions"]
+layout_mode = 2
+
+[node name="Score" type="Label" parent="PanelMain/VBoxContainerOptions/HBoxContainerOptions3"]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_font_sizes/font_size = 30
+text = "Score"
+
+[node name="OptionButton3" type="OptionButton" parent="PanelMain/VBoxContainerOptions/HBoxContainerOptions3"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_font_sizes/font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxEmpty_nhjq3")
+flat = true
+item_count = 2
+selected = 0
+popup/item_0/text = "Clasico"
+popup/item_0/id = 0
+popup/item_1/text = "Barra"
 popup/item_1/id = 1
 
 [node name="VBoxContainerMainMenu" type="VBoxContainer" parent="PanelMain"]
