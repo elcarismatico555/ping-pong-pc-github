@@ -3,7 +3,7 @@ extends RigidBody2D
 var speed : int = 300
 var numRandom : int
 var ultima_colision
-var velocidad_minima : int = 400
+var velocidad_minima : int = 300
 var ultimo_jugador_golpeado : String
 var visible_en_escena : bool = true
 
@@ -28,9 +28,8 @@ func _on_visible_on_screen_notifier_2d_screen_exited():
 	visible_en_escena = false
 
 func start():
-	$".".freeze = true
+	linear_velocity *= 0
 	await get_tree().create_timer(2.0).timeout
-	$".".freeze = false
 	numRandom = randi_range(-1, 1)
 	while numRandom == 0:
 		numRandom = randi_range(-1, 1)

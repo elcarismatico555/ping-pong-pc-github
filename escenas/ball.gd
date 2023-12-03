@@ -1,13 +1,11 @@
 extends CharacterBody2D
 
-var speed : int = 300
+var speed : int = 400
 var numRandom : int
 var ultima_colision : String
 var ultimo_jugador_golpeado : String
 var incremento : float = 1
-
-func _ready():
-	start()
+var visible_en_escena : bool = true
 
 func _physics_process(delta):
 	var  info_colision = move_and_collide(velocity * delta)
@@ -20,10 +18,18 @@ func _physics_process(delta):
 		print("ultima colision: " + ultima_colision)
 		print("jugador: " + ultimo_jugador_golpeado)
 
+func _on_visible_on_screen_notifier_2d_screen_entered():
+	visible_en_escena = true
+	start()
+
+func _on_visible_on_screen_notifier_2d_screen_exited():
+	visible_en_escena = false
+
 func start():
+	velocity *= 0
 	await get_tree().create_timer(2.0).timeout
 	numRandom = randi_range(-1, 1)
-	while numRandom == 0:
+	while !numRandom:
 		numRandom = randi_range(-1, 1)
 	velocity.x = numRandom
 	velocity.y = numRandom
@@ -46,3 +52,4 @@ func activar_behaviors(interruptor):
 	if interruptor[0]:
 		await get_tree().create_timer(1).timeout
 		$CollisionShape2D.shape.radius += 1
+

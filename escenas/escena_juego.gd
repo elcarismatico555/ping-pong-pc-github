@@ -14,7 +14,7 @@ func _ready():
 	spawn_bola()
 
 func _process(_delta):
-	if !$ball2.visible_en_escena:
+	if !$ball2.visible_en_escena or !$ball.visible_en_escena:
 		respawn_bola()
 
 func spawn_bola():
@@ -28,4 +28,5 @@ func spawn_bola():
 		$ball2/CollisionShape2D.disabled = false
 
 func respawn_bola():
+	$ball.position = POSICION_INICIAL_BOLA
 	$ball2.position = POSICION_INICIAL_BOLA
