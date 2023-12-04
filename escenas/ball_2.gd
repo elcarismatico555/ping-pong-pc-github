@@ -1,6 +1,6 @@
 extends RigidBody2D
 
-var speed : int = 300
+var speed : int = 500
 var ultima_colision
 var velocidad_minima : int = 300
 var ultimo_jugador_golpeado : String

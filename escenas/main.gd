@@ -21,3 +21,10 @@ func _on_option_button_item_selected(index):
 
 func _on_option_button_2_item_selected(index):
 	Global.modo_players = index
+
+func _on_option_button_3_item_selected(index):
+	Global.modo_score = index
+
+func _on_button_options_back_button_up():
+	$PanelMain/VBoxContainerOptions.visible = false
+	$PanelMain/VBoxContainerMainMenu.visible = true

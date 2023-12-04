@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var speed : int = 400
+var speed : int = 500
 var ultima_colision : String
 var ultimo_jugador_golpeado : String
 var incremento : float = 1
@@ -13,7 +13,6 @@ func _physics_process(delta):
 		velocity = velocity.bounce(info_colision.get_normal())
 		if ultima_colision == "player1" or ultima_colision == "player2":
 			ultimo_jugador_golpeado = ultima_colision
-		sumar_score()
 		print("ultima colision: " + ultima_colision)
 		print("jugador: " + ultimo_jugador_golpeado)
 
@@ -23,6 +22,7 @@ func _on_visible_on_screen_notifier_2d_screen_entered():
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
 	visible_en_escena = false
+	sumar_score()
 
 func start():
 	velocity *= 0
@@ -32,9 +32,9 @@ func start():
 	velocity *= speed
 
 func sumar_score():
-	if ultima_colision == "StaticBodyDerecha":
+	if ultima_colision == "StaticBodyDerecha" or position.x > 1280:
 		Global.scoreP1 += 1
-	if ultima_colision == "StaticBodyIzquierda":
+	if ultima_colision == "StaticBodyIzquierda" or position.x < 0:
 		Global.scoreP2 += 1
 	#if ultima_colision == "StaticBodyDerecha" and ultimo_jugador_golpeado == "player1":
 		#Global.scoreP1 += 1

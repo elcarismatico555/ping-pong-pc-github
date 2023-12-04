@@ -11,7 +11,9 @@ var behaviors_ball : Array = [0,0]
 var ultima_colision_pelota : String = ""
 var tipo_ball : int
 var modo_players : int
+var modo_score : int
 var lista_int : Array = [-1,1]
+var tiempo_de_juego : int
 
 func _ready():
 	keys_p1 = [KEY_A, KEY_D, KEY_W, KEY_S]
