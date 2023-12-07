@@ -9,24 +9,25 @@ var scoreP2 : int = 0
 var total : int = 0
 var behaviors_ball : Array = [0,0]
 var ultima_colision_pelota : String = ""
-var tipo_ball : int
-var modo_players : int
-var modo_score : int
+var tipo_ball : int = 0
+var modo_players : int = 0
+var modo_score : int = 0
 var lista_int : Array = [-1,1]
-var tiempo_de_juego : int
+var tiempo_de_juego : int = 0
+var cantidad_pelotas : int = 1
+var valor_barra_P1 : int = 0
+var valor_barra_P2 : int = 0
 
-func _ready():
+func _ready() -> void:
 	keys_p1 = [KEY_A, KEY_D, KEY_W, KEY_S]
 	keys_p2 = [KEY_LEFT, KEY_RIGHT, KEY_UP, KEY_DOWN]
 
-func _input(_event):
+func _input(_event) -> void:
 	if Input.is_action_just_released("ui_cancel"):
 		if get_tree().current_scene.name == "escena_juego":
 			get_tree().change_scene_to_file("res://escenas/main.tscn")
-			scoreP1 = 0
-			scoreP2 = 0
 
-func numero_random():
+func numero_random() -> int:
 	var random = lista_int[randi() % lista_int.size()]
 	return random
 

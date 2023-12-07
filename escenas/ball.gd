@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var speed : int = 500
+var speed : int = 400
 var ultima_colision : String
 var ultimo_jugador_golpeado : String
 var incremento : float = 1
@@ -26,7 +26,7 @@ func _on_visible_on_screen_notifier_2d_screen_exited():
 
 func start():
 	velocity *= 0
-	await get_tree().create_timer(2.0).timeout
+	await get_tree().create_timer(0.5).timeout
 	velocity.x = Global.numero_random()
 	velocity.y = Global.numero_random()
 	velocity *= speed

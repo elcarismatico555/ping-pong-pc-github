@@ -1,11 +1,9 @@
-[gd_scene load_steps=20 format=3 uid="uid://coji55dychjbe"]
+[gd_scene load_steps=19 format=3 uid="uid://coji55dychjbe"]
 
 [ext_resource type="Script" path="res://escenas/escena_juego.gd" id="1_76pay"]
 [ext_resource type="Script" path="res://escenas/escena_juego_interfaz.gd" id="1_j8xbj"]
 [ext_resource type="PackedScene" uid="uid://j10f4m6kx487" path="res://escenas/player_1.tscn" id="2_u8fpc"]
 [ext_resource type="PackedScene" uid="uid://b31d565fkt5pg" path="res://escenas/player_2.tscn" id="3_sx4wy"]
-[ext_resource type="PackedScene" uid="uid://byrmh3fxf88l5" path="res://escenas/ball.tscn" id="4_kaesl"]
-[ext_resource type="PackedScene" uid="uid://xbhj3w7x7fmq" path="res://escenas/ball_2.tscn" id="7_mk6jy"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_i0r11"]
 friction = 0.0
@@ -37,12 +35,17 @@ size = Vector2(20, 720)
 friction = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qsbgj"]
-size = Vector2(32, 720)
+size = Vector2(12, 720)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r0qxg"]
 bg_color = Color(1, 1, 1, 0.666667)
 corner_radius_top_left = 50
 corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8jyrj"]
+bg_color = Color(0, 0, 0, 0.705882)
 corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
 
@@ -127,13 +130,6 @@ metadata/_edit_group_ = true
 position = Vector2(1230, 360)
 metadata/_edit_group_ = true
 
-[node name="ball" parent="escenaJuego" instance=ExtResource("4_kaesl")]
-position = Vector2(600, 390)
-metadata/_edit_group_ = true
-
-[node name="ball2" parent="escenaJuego" instance=ExtResource("7_mk6jy")]
-position = Vector2(600, 350)
-
 [node name="HBoxContainer1" type="HBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -144,54 +140,16 @@ offset_right = -256.0
 offset_bottom = -570.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 200
+theme_override_constants/separation = 20
 alignment = 1
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer1"]
 layout_mode = 2
-alignment = 2
-
-[node name="ContadorP1" type="Label" parent="HBoxContainer1/VBoxContainer2"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 40
-text = "0"
-vertical_alignment = 2
-
-[node name="VBoxContainer1" type="VBoxContainer" parent="HBoxContainer1"]
-layout_mode = 2
-
-[node name="tiempo" type="Label" parent="HBoxContainer1/VBoxContainer1"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 50
-text = "0"
-horizontal_alignment = 1
-
-[node name="VBoxContainer3" type="VBoxContainer" parent="HBoxContainer1"]
-layout_mode = 2
-alignment = 2
-
-[node name="ContadorP2" type="Label" parent="HBoxContainer1/VBoxContainer3"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 40
-text = "0"
-vertical_alignment = 2
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="."]
-visible = false
-layout_mode = 0
-offset_left = 256.0
-offset_right = 1024.0
-offset_bottom = 150.0
-theme_override_constants/separation = 50
-
-[node name="VBoxContainerP1" type="VBoxContainer" parent="HBoxContainer2"]
-layout_mode = 2
 size_flags_horizontal = 3
-alignment = 1
+alignment = 2
 
-[node name="ProgressBarP1" type="ProgressBar" parent="HBoxContainer2/VBoxContainerP1"]
+[node name="ProgressBarP1" type="ProgressBar" parent="HBoxContainer1/VBoxContainer2"]
 layout_mode = 2
-size_flags_vertical = 4
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 2
@@ -200,12 +158,32 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_r0qxg")
 max_value = 10.0
 fill_mode = 1
 
-[node name="VBoxContainerP2" type="VBoxContainer" parent="HBoxContainer2"]
+[node name="ContadorP1" type="Label" parent="HBoxContainer1/VBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="VBoxContainer1" type="VBoxContainer" parent="HBoxContainer1"]
+layout_mode = 2
+
+[node name="tiempo" type="Label" parent="HBoxContainer1/VBoxContainer1"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_8jyrj")
+text = "0"
+horizontal_alignment = 1
+
+[node name="Timer" type="Timer" parent="HBoxContainer1/VBoxContainer1/tiempo"]
+one_shot = true
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="HBoxContainer1"]
 layout_mode = 2
 size_flags_horizontal = 3
-alignment = 1
+alignment = 2
 
-[node name="ProgressBarP2" type="ProgressBar" parent="HBoxContainer2/VBoxContainerP2"]
+[node name="ProgressBarP2" type="ProgressBar" parent="HBoxContainer1/VBoxContainer3"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
@@ -213,3 +191,79 @@ theme_override_constants/outline_size = 2
 theme_override_font_sizes/font_size = 25
 theme_override_styles/fill = SubResource("StyleBoxFlat_ykyi4")
 max_value = 10.0
+
+[node name="ContadorP2" type="Label" parent="HBoxContainer1/VBoxContainer3"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="PantallaTiempoFinalizado" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ColorRectTiempoFinalizado" type="ColorRect" parent="PantallaTiempoFinalizado"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.741176)
+
+[node name="VBoxContainerTiempoFinalizado" type="VBoxContainer" parent="PantallaTiempoFinalizado"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 128.0
+offset_top = 64.0
+offset_right = -128.0
+offset_bottom = -64.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TituloTiempoFinalizado" type="Label" parent="PantallaTiempoFinalizado/VBoxContainerTiempoFinalizado"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "WIN"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="JugadorGanador" type="Label" parent="PantallaTiempoFinalizado/VBoxContainerTiempoFinalizado"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="ScoresFinales" type="HBoxContainer" parent="PantallaTiempoFinalizado/VBoxContainerTiempoFinalizado"]
+layout_mode = 2
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="LabelScoreP1" type="Label" parent="PantallaTiempoFinalizado/VBoxContainerTiempoFinalizado/ScoresFinales"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "0"
+
+[node name="LabelVS" type="Label" parent="PantallaTiempoFinalizado/VBoxContainerTiempoFinalizado/ScoresFinales"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "VS"
+
+[node name="LabelScoreP2" type="Label" parent="PantallaTiempoFinalizado/VBoxContainerTiempoFinalizado/ScoresFinales"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "0"
+
+[connection signal="value_changed" from="HBoxContainer1/VBoxContainer2/ProgressBarP1" to="." method="_on_progress_bar_p_1_value_changed"]
+[connection signal="timeout" from="HBoxContainer1/VBoxContainer1/tiempo/Timer" to="." method="_on_timer_timeout"]
+[connection signal="value_changed" from="HBoxContainer1/VBoxContainer3/ProgressBarP2" to="." method="_on_progress_bar_p_2_value_changed"]

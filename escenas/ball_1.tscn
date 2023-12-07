@@ -1,13 +1,13 @@
 [gd_scene load_steps=4 format=3 uid="uid://xbhj3w7x7fmq"]
 
-[ext_resource type="Script" path="res://escenas/ball_2.gd" id="1_fv375"]
+[ext_resource type="Script" path="res://escenas/ball_1.gd" id="1_fv375"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_1366s"]
 absorbent = true
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tgcmo"]
 
-[node name="ball2" type="RigidBody2D"]
+[node name="ball1" type="RigidBody2D"]
 collision_layer = 2
 collision_mask = 3
 physics_material_override = SubResource("PhysicsMaterial_1366s")
@@ -19,6 +19,7 @@ script = ExtResource("1_fv375")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_tgcmo")
+disabled = true
 debug_color = Color(1, 1, 1, 0.419608)
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]

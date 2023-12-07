@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://kg8cy2e8nwp4"]
+[gd_scene load_steps=12 format=3 uid="uid://kg8cy2e8nwp4"]
 
 [ext_resource type="Script" path="res://escenas/main.gd" id="1_0i73x"]
 
@@ -9,6 +9,10 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bjs8s"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nhjq3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xpttu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_diwgc"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_016c3"]
 
@@ -95,9 +99,10 @@ theme_override_font_sizes/font_size = 20
 theme_override_styles/focus = SubResource("StyleBoxEmpty_1bvmy")
 flat = true
 item_count = 2
-selected = 0
+selected = 1
 popup/item_0/text = "CharacterBody"
 popup/item_0/id = 0
+popup/item_0/disabled = true
 popup/item_1/text = "RigidBody"
 popup/item_1/id = 1
 
@@ -145,23 +150,72 @@ popup/item_1/text = "Barra"
 popup/item_1/id = 1
 
 [node name="HBoxContainerOptions4" type="HBoxContainer" parent="PanelMain/VBoxContainerOptions"]
-visible = false
 layout_mode = 2
 
 [node name="Tiempo" type="Label" parent="PanelMain/VBoxContainerOptions/HBoxContainerOptions4"]
 layout_mode = 2
 size_flags_horizontal = 2
 theme_override_font_sizes/font_size = 30
-text = "Tiempo"
+text = "Tiempo/m"
 
 [node name="OptionButtonMinutos" type="OptionButton" parent="PanelMain/VBoxContainerOptions/HBoxContainerOptions4"]
 layout_mode = 2
 size_flags_horizontal = 10
-theme_override_font_sizes/font_size = 30
-item_count = 1
+theme_override_font_sizes/font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xpttu")
+flat = true
+item_count = 11
 selected = 0
 popup/item_0/text = "0"
 popup/item_0/id = 0
+popup/item_1/text = "1"
+popup/item_1/id = 1
+popup/item_2/text = "2"
+popup/item_2/id = 2
+popup/item_3/text = "3"
+popup/item_3/id = 3
+popup/item_4/text = "4"
+popup/item_4/id = 4
+popup/item_5/text = "5"
+popup/item_5/id = 5
+popup/item_6/text = "6"
+popup/item_6/id = 6
+popup/item_7/text = "7"
+popup/item_7/id = 7
+popup/item_8/text = "8"
+popup/item_8/id = 8
+popup/item_9/text = "9"
+popup/item_9/id = 9
+popup/item_10/text = "10"
+popup/item_10/id = 10
+
+[node name="HBoxContainerOptions5" type="HBoxContainer" parent="PanelMain/VBoxContainerOptions"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelMain/VBoxContainerOptions/HBoxContainerOptions5"]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_font_sizes/font_size = 30
+text = "Cantidad pelotas"
+
+[node name="OptionButtonCantidadPelotas" type="OptionButton" parent="PanelMain/VBoxContainerOptions/HBoxContainerOptions5"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxEmpty_diwgc")
+flat = true
+item_count = 5
+selected = 0
+popup/item_0/text = "1"
+popup/item_0/id = 1
+popup/item_1/text = "2"
+popup/item_1/id = 2
+popup/item_2/text = "3"
+popup/item_2/id = 3
+popup/item_3/text = "4"
+popup/item_3/id = 4
+popup/item_4/text = "5"
+popup/item_4/id = 5
 
 [node name="HSeparator" type="HSeparator" parent="PanelMain/VBoxContainerOptions"]
 custom_minimum_size = Vector2(0, 30)
@@ -203,6 +257,8 @@ text = "EXIT"
 [connection signal="item_selected" from="PanelMain/VBoxContainerOptions/HBoxContainerOptions1/OptionButton1" to="." method="_on_option_button_item_selected"]
 [connection signal="item_selected" from="PanelMain/VBoxContainerOptions/HBoxContainerOptions2/OptionButton2" to="." method="_on_option_button_2_item_selected"]
 [connection signal="item_selected" from="PanelMain/VBoxContainerOptions/HBoxContainerOptions3/OptionButton3" to="." method="_on_option_button_3_item_selected"]
+[connection signal="item_selected" from="PanelMain/VBoxContainerOptions/HBoxContainerOptions4/OptionButtonMinutos" to="." method="_on_option_button_minutos_item_selected"]
+[connection signal="item_selected" from="PanelMain/VBoxContainerOptions/HBoxContainerOptions5/OptionButtonCantidadPelotas" to="." method="_on_option_button_cantidad_pelotas_item_selected"]
 [connection signal="button_up" from="PanelMain/VBoxContainerOptions/ButtonOptionsBack" to="." method="_on_button_options_back_button_up"]
 [connection signal="button_up" from="PanelMain/VBoxContainerMainMenu/ButtonPlay" to="." method="_on_button_play_button_up"]
 [connection signal="button_up" from="PanelMain/VBoxContainerMainMenu/ButtonOptions" to="." method="_on_button_options_button_up"]
