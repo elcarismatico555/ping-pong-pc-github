@@ -4,7 +4,6 @@ var POSICION_INICIAL_JUGADOR1 = Vector2(30,360)
 var POSICION_INICIAL_JUGADOR2 = Vector2(1250,360)
 var POSICION_INICIAL_BOLA = Vector2(640,360)
 var escena_pelota : PackedScene = preload("res://escenas/ball_1.tscn")
-var instancia_pelota = escena_pelota.instantiate()
 
 func _ready() -> void:
 #	$ball.visible = false
@@ -38,7 +37,7 @@ func spawn_bola() -> void:
 		pass
 
 func activar_pelotas():
-	get_node("ball1").start()
+	#get_node("/escenajuego/ball" + str(numero_pelota)).start()
 	pass
 
 func respawn_bola() -> void:
@@ -56,7 +55,7 @@ func respawn_bola() -> void:
 
 func añadir_pelotas_segun_cantidad_seleccionada() -> void:
 	for x in Global.cantidad_pelotas:
-		add_child(instancia_pelota,true)
-		$ball1.position = POSICION_INICIAL_BOLA
+		print(Global.cantidad_pelotas)
+		add_child(escena_pelota.instantiate(),true)
 		activar_pelotas()
 		#await get_tree().create_timer(0.4).timeout

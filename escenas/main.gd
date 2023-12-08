@@ -8,7 +8,6 @@ func _ready() -> void:
 	Global.modo_players = $PanelMain/VBoxContainerOptions/HBoxContainerOptions2/OptionButton2.get_selected_id()
 	Global.tiempo_de_juego = $PanelMain/VBoxContainerOptions/HBoxContainerOptions4/OptionButtonMinutos.get_selected_id()
 	Global.cantidad_pelotas = $PanelMain/VBoxContainerOptions/HBoxContainerOptions5/OptionButtonCantidadPelotas.get_selected_id()
-	print(Global.cantidad_pelotas)
 
 func _on_button_play_button_up() -> void:
 	get_tree().change_scene_to_file("res://escenas/escena_juego.tscn")
@@ -39,7 +38,7 @@ func _on_option_button_minutos_item_selected(index) -> void:
 	Global.tiempo_de_juego = index
 
 func _on_option_button_cantidad_pelotas_item_selected(index) -> void:
-	Global.cantidad_pelotas = %OptionButtonCantidadPelotas.get_item_id(index)
+	pass
 
 func _on_button_options_back_button_up() -> void:
 	$PanelMain/VBoxContainerOptions.visible = false
