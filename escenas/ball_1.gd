@@ -1,18 +1,19 @@
 extends RigidBody2D
 
-var speed : int = 300
+var speed : int = 100
 var ultima_colision
-var velocidad_minima : int = 300
+#var velocidad_minima : int = 100
 var ultimo_jugador_golpeado : String
 var visible_en_escena : bool = true
 
 func _ready() -> void:
+	$".".visible = false
 	$CollisionShape2D.disabled = true
 
 func _physics_process(delta) -> void:
 	var  info_colision = move_and_collide(linear_velocity.normalized() * speed * delta)
-	if linear_velocity.length() < velocidad_minima:
-		linear_velocity = linear_velocity.normalized() * velocidad_minima
+	if linear_velocity.length() < speed:
+		linear_velocity = linear_velocity.normalized() * speed
 	if info_colision:
 		ultima_colision = info_colision.get_collider().name
 		linear_velocity = linear_velocity.bounce(info_colision.get_normal())
@@ -31,12 +32,12 @@ func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	visible_en_escena = false
 
 func start() -> void:
-	print("si")
+	print(get_node(".").name + " activada")
 	linear_velocity *= 0
-	await get_tree().create_timer(0.5).timeout
 	linear_velocity.x = Global.numero_random()
 	linear_velocity.y = Global.numero_random()
 	$CollisionShape2D.disabled = false
+	$".".visible = true
 	linear_velocity *= speed
 
 func sumar_score() -> void:

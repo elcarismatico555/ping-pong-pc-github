@@ -250,6 +250,7 @@ theme_override_constants/separation = 50
 alignment = 1
 
 [node name="LabelScoreP1" type="Label" parent="PantallaTiempoFinalizado/VBoxContainerTiempoFinalizado/ScoresFinales"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "0"
@@ -260,6 +261,7 @@ theme_override_font_sizes/font_size = 40
 text = "VS"
 
 [node name="LabelScoreP2" type="Label" parent="PantallaTiempoFinalizado/VBoxContainerTiempoFinalizado/ScoresFinales"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "0"

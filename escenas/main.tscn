@@ -92,7 +92,8 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Ball"
 
-[node name="OptionButton1" type="OptionButton" parent="PanelMain/VBoxContainerOptions/HBoxContainerOptions1"]
+[node name="OptionButtonBall" type="OptionButton" parent="PanelMain/VBoxContainerOptions/HBoxContainerOptions1"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 10
 theme_override_font_sizes/font_size = 20
@@ -114,7 +115,8 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Player"
 
-[node name="OptionButton2" type="OptionButton" parent="PanelMain/VBoxContainerOptions/HBoxContainerOptions2"]
+[node name="OptionButtonPlayers" type="OptionButton" parent="PanelMain/VBoxContainerOptions/HBoxContainerOptions2"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 10
 theme_override_font_sizes/font_size = 20
@@ -136,7 +138,8 @@ size_flags_horizontal = 2
 theme_override_font_sizes/font_size = 30
 text = "Score"
 
-[node name="OptionButton3" type="OptionButton" parent="PanelMain/VBoxContainerOptions/HBoxContainerOptions3"]
+[node name="OptionButtonScore" type="OptionButton" parent="PanelMain/VBoxContainerOptions/HBoxContainerOptions3"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 10
 theme_override_font_sizes/font_size = 20
@@ -159,6 +162,7 @@ theme_override_font_sizes/font_size = 30
 text = "Tiempo/m"
 
 [node name="OptionButtonMinutos" type="OptionButton" parent="PanelMain/VBoxContainerOptions/HBoxContainerOptions4"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 10
 theme_override_font_sizes/font_size = 20
@@ -192,7 +196,7 @@ popup/item_10/id = 10
 [node name="HBoxContainerOptions5" type="HBoxContainer" parent="PanelMain/VBoxContainerOptions"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="PanelMain/VBoxContainerOptions/HBoxContainerOptions5"]
+[node name="CantidadPelotas" type="Label" parent="PanelMain/VBoxContainerOptions/HBoxContainerOptions5"]
 layout_mode = 2
 size_flags_horizontal = 2
 theme_override_font_sizes/font_size = 30
@@ -254,9 +258,9 @@ theme_override_font_sizes/font_size = 40
 theme_override_styles/focus = SubResource("StyleBoxEmpty_u1l1e")
 text = "EXIT"
 
-[connection signal="item_selected" from="PanelMain/VBoxContainerOptions/HBoxContainerOptions1/OptionButton1" to="." method="_on_option_button_item_selected"]
-[connection signal="item_selected" from="PanelMain/VBoxContainerOptions/HBoxContainerOptions2/OptionButton2" to="." method="_on_option_button_2_item_selected"]
-[connection signal="item_selected" from="PanelMain/VBoxContainerOptions/HBoxContainerOptions3/OptionButton3" to="." method="_on_option_button_3_item_selected"]
+[connection signal="item_selected" from="PanelMain/VBoxContainerOptions/HBoxContainerOptions1/OptionButtonBall" to="." method="_on_option_button_item_selected"]
+[connection signal="item_selected" from="PanelMain/VBoxContainerOptions/HBoxContainerOptions2/OptionButtonPlayers" to="." method="_on_option_button_2_item_selected"]
+[connection signal="item_selected" from="PanelMain/VBoxContainerOptions/HBoxContainerOptions3/OptionButtonScore" to="." method="_on_option_button_3_item_selected"]
 [connection signal="item_selected" from="PanelMain/VBoxContainerOptions/HBoxContainerOptions4/OptionButtonMinutos" to="." method="_on_option_button_minutos_item_selected"]
 [connection signal="item_selected" from="PanelMain/VBoxContainerOptions/HBoxContainerOptions5/OptionButtonCantidadPelotas" to="." method="_on_option_button_cantidad_pelotas_item_selected"]
 [connection signal="button_up" from="PanelMain/VBoxContainerOptions/ButtonOptionsBack" to="." method="_on_button_options_back_button_up"]

@@ -42,8 +42,8 @@ func _on_timer_timeout() -> void:
 		$PantallaTiempoFinalizado/VBoxContainerTiempoFinalizado/JugadorGanador.text = "Player 1"
 	else:
 		$PantallaTiempoFinalizado/VBoxContainerTiempoFinalizado/JugadorGanador.text = "Player 2"
-	$PantallaTiempoFinalizado/VBoxContainerTiempoFinalizado/ScoresFinales/LabelScoreP1.text = str(Global.scoreP1)
-	$PantallaTiempoFinalizado/VBoxContainerTiempoFinalizado/ScoresFinales/LabelScoreP2.text = str(Global.scoreP2)
+	%LabelScoreP1.text = str(Global.scoreP1)
+	%LabelScoreP2.text = str(Global.scoreP2)
 # -- endregion --
 
 func habilitar_modo_score() -> void:
