@@ -9,7 +9,8 @@ var nodo_pelota : Node
 func _ready() -> void:
 	spawn_jugadores()
 	añadir_pelotas_segun_cantidad_seleccionada()
-#region -- SPAWNERS --
+
+#  -- SPAWNERS --
 
 func spawn_jugadores() -> void:
 	$player1.position = POSICION_INICIAL_JUGADOR1
@@ -18,7 +19,9 @@ func spawn_jugadores() -> void:
 func spawn_bola(numPelota) -> void:
 	nodo_pelota = get_node("./ball" + str(numPelota))
 	nodo_pelota.position = POSICION_INICIAL_BOLA
-# -- endregion --
+
+func respawn_bolas():
+	pass
 
 func activar_pelotas(numPelota):
 	get_node("./ball" + str(numPelota)).start()

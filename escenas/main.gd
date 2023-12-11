@@ -8,6 +8,8 @@ func _ready() -> void:
 	Global.modo_players = %OptionButtonPlayers.get_selected_id()
 	Global.tiempo_de_juego = %OptionButtonMinutos.get_selected_id()
 
+# -- CAMBIO ESCENAS --
+
 func _on_button_play_button_up() -> void:
 	get_tree().change_scene_to_file("res://escenas/escena_juego.tscn")
 
@@ -23,6 +25,8 @@ func _input(_event) -> void:
 		if $PanelMain/VBoxContainerOptions.visible:
 			$PanelMain/VBoxContainerOptions.visible = false
 			$PanelMain/VBoxContainerMainMenu.visible = true
+
+# -- BOTONES ITEM SELECCIONADO --
 
 func _on_option_button_item_selected(index) -> void:
 	Global.tipo_ball = index

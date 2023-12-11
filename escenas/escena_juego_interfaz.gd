@@ -25,7 +25,7 @@ func actualizar_modo_score_barra():
 	cambiar_valor_progress_bar1()
 	cambiar_valor_progress_bar2()
 
-#region -- Temporizador en partida --
+#  -- Temporizador en partida --
 
 func tiempo_juego() -> void:
 	if Global.tiempo_de_juego != 0:
@@ -44,7 +44,6 @@ func _on_timer_timeout() -> void:
 		$PantallaTiempoFinalizado/VBoxContainerTiempoFinalizado/JugadorGanador.text = "Player 2"
 	%LabelScoreP1.text = str(Global.scoreP1)
 	%LabelScoreP2.text = str(Global.scoreP2)
-# -- endregion --
 
 func habilitar_modo_score() -> void:
 	if Global.modo_score == 0:

@@ -25,7 +25,6 @@ func _physics_process(delta) -> void:
 
 func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
 	visible_en_escena = true
-	#start()
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	sumar_score()
